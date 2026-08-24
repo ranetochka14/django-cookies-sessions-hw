@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<h2>Избранные статьи</h2>
+{% if articles %}
+    <p><a href="{% url 'clear_favorites' %}" style="color: #c00;">Очистить избранное</a></p>
+    {% for article in articles %}
+        <div class="card">
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.content }}</p>
+            <a href="{% url 'toggle_favorite' article.id %}">Удалить из избранного</a>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Список избранного пуст.</p>
+{% endif %}
+{% endblock %}

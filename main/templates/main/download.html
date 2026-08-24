@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="card">
+    <h2>4. Защищённая ссылка на скачивание</h2>
+    <p>Ссылка содержит криптографическую подпись <code>TimestampSigner</code> и валидна в течение <b>5 минут</b>:</p>
+    <p>
+        <a class="btn" href="{% url 'download_file' %}?token={{ token }}">Скачать report.pdf</a>
+    </p>
+    <hr style="border: none; border-top: 1px solid #eee; margin: 15px 0;">
+    <p><small><b>Как проверить ошибки:</b> скопируй адрес ссылки и измени в адресной строке любой символ в параметре <code>?token=...</code> — сработает <code>messages.error</code>.</small></p>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="card" style="max-width: 500px;">
+    <h2>Настройки пользователя (Cookie)</h2>
+    <form method="post">
+        {% csrf_token %}
+        <p>
+            <label>Язык интерфейса:</label><br>
+            <select name="lang" style="width: 100%; padding: 8px;">
+                <option value="ru" {% if settings.lang == 'ru' %}selected{% endif %}>Русский</option>
+                <option value="en" {% if settings.lang == 'en' %}selected{% endif %}>English</option>
+                <option value="kz" {% if settings.lang == 'kz' %}selected{% endif %}>Қазақша</option>
+            </select>
+        </p>
+        <p>
+            <label>Количество товаров на странице:</label><br>
+            <input type="number" name="items_per_page" value="{{ settings.items_per_page }}" style="width: 100%; padding: 8px; box-sizing: border-box;">
+        </p>
+        <p>
+            <label>Режим отображения списка:</label><br>
+            <select name="view_mode" style="width: 100%; padding: 8px;">
+                <option value="grid" {% if settings.view_mode == 'grid' %}selected{% endif %}>Grid (Сетка)</option>
+                <option value="list" {% if settings.view_mode == 'list' %}selected{% endif %}>List (Список)</option>
+            </select>
+        </p>
+        <button type="submit" name="action" value="save">Сохранить настройки</button>
+        <button type="submit" name="action" value="reset" style="background: #6c757d;">Сбросить настройки</button>
+    </form>
+</div>
+{% endblock %}
