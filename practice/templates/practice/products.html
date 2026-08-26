@@ -1,0 +1,9 @@
+{% extends 'practice/base.html' %}
+{% block content %}
+    <h2>Список товаров</h2>
+    <ul>
+    {% for id, item in products.items %}
+        <li>{{ item.name }} ({{ item.price }} ₸) — <a href="{% url 'cart_add' id %}">В корзину</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Практика</title>
+    <style>
+        .msg { padding: 8px 12px; margin-bottom: 8px; border-radius: 4px; }
+        .msg.success { background: #d4edda; color: #155724; }
+        .msg.warning { background: #fff3cd; color: #856404; }
+        .msg.info { background: #d1ecf1; color: #0c5460; }
+        .msg.error { background: #f8d7da; color: #721c24; }
+        nav a { margin-right: 12px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'visits' %}">Счётчик</a>
+        <a href="{% url 'products' %}">Товары</a>
+        <a href="{% url 'cart' %}">Корзина</a>
+        <a href="{% url 'promo_generate' %}">Промокод</a>
+        <a href="{% url 'promo_check' %}">Проверка</a>
+    </nav>
+    <hr>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="msg {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% block content %}{% endblock %}
+</body>
+</html>

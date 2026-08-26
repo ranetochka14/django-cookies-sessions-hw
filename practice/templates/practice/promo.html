@@ -1,0 +1,6 @@
+{% extends 'practice/base.html' %}
+{% block content %}
+    <h2>Генерация промокода</h2>
+    <textarea rows="2" cols="60" readonly>{{ promo_token }}</textarea>
+    <p><small>Действует 60 секунд</small></p>
+{% endblock %}

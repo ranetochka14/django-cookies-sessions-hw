@@ -1,0 +1,9 @@
+{% extends 'practice/base.html' %}
+{% block content %}
+    <h2>Счётчик посещений</h2>
+    <p>Вы посетили эту страницу <strong>{{ visits }}</strong> раз.</p>
+    <form action="{% url 'visits_reset' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Сбросить счётчик</button>
+    </form>
+{% endblock %}

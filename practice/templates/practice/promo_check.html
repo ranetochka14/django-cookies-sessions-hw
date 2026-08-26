@@ -1,0 +1,11 @@
+{% extends 'practice/base.html' %}
+{% block content %}
+    <h2>Проверка промокода</h2>
+    <form method="get">
+        <input type="text" name="code" value="{{ checked_code }}" size="50">
+        <button type="submit">Проверить</button>
+    </form>
+    {% if status == 'valid' %}<p style="color: green;">Действителен: {{ promo_value }}</p>
+    {% elif status == 'expired' %}<p style="color: orange;">Срок истёк</p>
+    {% elif status == 'invalid' %}<p style="color: red;">Недействителен / изменён</p>{% endif %}
+{% endblock %}

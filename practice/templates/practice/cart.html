@@ -1,0 +1,19 @@
+{% extends 'practice/base.html' %}
+{% block content %}
+    <h2>Корзина</h2>
+    {% if cart_items %}
+        <table border="1" cellpadding="5" cellspacing="0">
+            <tr><th>Товар</th><th>Кол-во</th><th>Сумма</th><th>Действие</th></tr>
+            {% for item in cart_items %}
+            <tr>
+                <td>{{ item.name }}</td><td>{{ item.quantity }}</td><td>{{ item.total }} ₸</td>
+                <td><a href="{% url 'cart_remove' item.id %}">Удалить</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <p><strong>Итого:</strong> {{ total_cost }} ₸</p>
+        <p><a href="{% url 'cart_clear' %}">Очистить корзину</a></p>
+    {% else %}
+        <p>Корзина пуста.</p>
+    {% endif %}
+{% endblock %}
